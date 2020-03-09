@@ -1,0 +1,41 @@
+namespace Models
+{
+    public class Item
+    {
+        public string ItemName
+        {
+            get;
+            set;
+        }
+    }
+
+    public class ItemViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        // Raise a property change notification
+        protected virtual void OnPropertyChanged(string propname)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propname));
+        }
+
+        private ObservableCollection<Item> _Items;
+        public ObservableCollection<Item> Items
+        {
+            get
+            {
+                return _Items;
+            }
+
+            set
+            {
+                _Items = value;
+                OnPropertyChanged(nameof(Items));
+            }
+        }
+
+        public ItemViewModel()
+        {
+        // Implement your logic to load a collection of items
+        }
+    }
+}
