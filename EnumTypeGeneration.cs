@@ -7,18 +7,12 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-namespace RoslynCore
+namespace EnumGenerator
 {
   public static class EnumTypeGeneration
   {
-    public static SyntaxNode GenerateEnumType(SyntaxNode node)
+    public static SyntaxNode GenerateEnumType(SyntaxNode node, string stringConnection)
     {
-      IList<Tuple<int, string, string>> enumItems = new List<Tuple<int, string, string>>{
-        new Tuple<int, string, string>(1, "AccountNormal", "Desc AccountNormal"),
-        new Tuple<int, string, string>(2, "AccountNumber", "Desc AccountNumber"),
-        new Tuple<int, string, string>(3, "AccountSpecial", "Desc AccountSpecial"),
-        new Tuple<int, string, string>(4, "AccountSample", "Desc AccountSample"),
-      };
       // Find the first class in the syntax node
       var enumNode = node.DescendantNodes().OfType<EnumDeclarationSyntax>().FirstOrDefault();
 
@@ -29,13 +23,21 @@ namespace RoslynCore
         {
            // Get the name of the enum
           var enumName = enumNode.Identifier.Text;
-
+          var tableNameAttribute = enumNode.AttributeLists.FirstOrDefault();
+          string tableName = tableNameAttribute.Attributes.FirstOrDefault().ArgumentList.Arguments[0].ToString().Replace('"', ' ').Trim();
+          string columnId = tableNameAttribute.Attributes.FirstOrDefault().ArgumentList.Arguments[1].ToString().Replace('"', ' ').Trim();
+          IEnumerable<Tuple<int, string, string>> enumItems = new DataTableLoader(stringConnection).Load(columnId, tableName);
           // Only for demo purposes, pluralizing an object is done by
           // simply adding the "s" letter. Consider proper algorithms
           StringBuilder newImplementation = new StringBuilder();
-          newImplementation.Append($@"        
+          newImplementation.Append($@" 
+            using System.ComponentModel;
+
+              {tableNameAttribute.ToString()}       
               public enum {enumName} {{");
-          foreach(var item in enumItems){
+
+          foreach(var item in enumItems)
+          {
             newImplementation.AppendLine($@" /// <summary>
     /// {item.Item2} = {item.Item1}
     /// </summary>
@@ -43,7 +45,7 @@ namespace RoslynCore
             newImplementation.AppendLine($"{item.Item2} = {item.Item1},");
           }
 
-        newImplementation.Append("}}");
+        newImplementation.Append("}");
 
             var newEnumNode =
               SyntaxFactory.ParseSyntaxTree(newImplementation.ToString()).GetRoot()
@@ -54,10 +56,16 @@ namespace RoslynCore
             if(!(enumNode.Parent is NamespaceDeclarationSyntax)) return null;
 
             var parentNamespace = (NamespaceDeclarationSyntax)enumNode.Parent;
-            // Add the new class to the namespace
-             var newParentNamespace = parentNamespace.RemoveNode(enumNode, SyntaxRemoveOptions.KeepEndOfLine);
-            newParentNamespace = newParentNamespace.AddMembers(newEnumNode).NormalizeWhitespace();
 
+            var qualifiedName = SyntaxFactory.ParseName("System.ComponentModel");
+            var usingDirective = SyntaxFactory.UsingDirective(qualifiedName);
+            // Add the new class to the namespace
+            var newParentNamespace = parentNamespace.RemoveNode(enumNode, SyntaxRemoveOptions.KeepEndOfLine)
+                                                    .AddMembers(newEnumNode).NormalizeWhitespace();
+            if (!newParentNamespace.Usings.Select(d => d.Name.ToString()).Any(u => u == qualifiedName.ToString()))
+            {
+                newParentNamespace = newParentNamespace.AddUsings(usingDirective).NormalizeWhitespace();
+            }                                 
             return newParentNamespace;
         }
         else

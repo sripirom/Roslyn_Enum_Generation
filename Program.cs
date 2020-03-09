@@ -1,54 +1,56 @@
 ﻿using System;
-using RoslynCore;
+using EnumGenerator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System.IO;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
 
-namespace RoslynCore
+namespace EnumGenerator
 {
     class Program
     {
         static void Main(string[] args)
         {
+            string connectionString = GetConnectionString("");
+            Console.WriteLine(connectionString);
+
             string enumPath = Path.Combine(Directory.GetCurrentDirectory(), "Enums");
-            foreach(var enumFileName in Directory.GetFiles(enumPath))
+            foreach(var enumFileName in Directory.GetFiles(enumPath).ToList().Where(a=> new FileInfo(a).Name.StartsWith("Enum")))
             {
                 Console.WriteLine(enumFileName);
-                string enumContent = File.ReadAllText(enumFileName);
-                
-                GenerateSampleEnum(enumContent);
+             
+                GenerateSampleEnum(enumFileName, connectionString);
             }
-          
         }
 
-        static void GenerateSampleEnum(string models)
+        public static string GetConnectionString(string environmentName)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environmentName}.json", optional: true);
 
-            var node = CSharpSyntaxTree.ParseText(models).GetRoot();
-            var viewModel = EnumTypeGeneration.GenerateEnumType(node);
-            if(viewModel!=null)
-                Console.WriteLine(viewModel.ToFullString());
+            IConfigurationRoot configuration = builder.Build();
+            string conString = Microsoft
+            .Extensions
+            .Configuration
+            .ConfigurationExtensions
+            .GetConnectionString(configuration, "DefaultConnection");
 
-            Console.ReadLine();
+            return conString;
         }
 
-        static void GenerateSampleViewModel()
+        static void GenerateSampleEnum(string enumFileName, string connectionString)
         {
-            const string models = @"namespace Models
-{
-  public class Item
-  {
-    public string ItemName { get; set; }
-  }
-}
-";
-        var node = CSharpSyntaxTree.ParseText(models).GetRoot();
-        var viewModel = ViewModelGeneration.GenerateViewModel(node);
-        if(viewModel!=null)
-            Console.WriteLine(viewModel.ToFullString());
+            string enumContent = File.ReadAllText(enumFileName);
+            var node = CSharpSyntaxTree.ParseText(enumContent).GetRoot();
+            var enumModel = EnumTypeGeneration.GenerateEnumType(node, connectionString);
 
-        Console.ReadLine();
+            if(enumModel!=null){
+                Console.WriteLine(enumModel.ToFullString());
+                File.WriteAllText(enumFileName, enumModel.ToFullString());
+            }
         }
     }
-
 }
