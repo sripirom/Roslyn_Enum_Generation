@@ -1,0 +1,8 @@
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\bin\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.deps.json
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\bin\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.dll
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\bin\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.pdb
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\obj\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.csproj.CoreCompileInputs.cache
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\obj\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.AssemblyInfoInputs.cache
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\obj\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.AssemblyInfo.cs
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\obj\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.dll
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Package\obj\Debug\netstandard2.0\Sripirom.EnumGenerator.Package.pdb

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sripirom.EnumGenerator", "Sripirom.EnumGenerator\Sripirom.EnumGenerator.csproj", "{FB81F024-39B4-416D-96AE-4E24883A09DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sripirom.EnumGenerator.Package", "Sripirom.EnumGenerator.Package\Sripirom.EnumGenerator.Package.csproj", "{56EF3C9E-F7AB-445F-909A-656F16C93E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sripirom.EnumGenerator.Services", "Sripirom.EnumGenerator.Services\Sripirom.EnumGenerator.Services.csproj", "{281088E7-B6C1-456C-8419-1ABABBD32BF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB81F024-39B4-416D-96AE-4E24883A09DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB81F024-39B4-416D-96AE-4E24883A09DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB81F024-39B4-416D-96AE-4E24883A09DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB81F024-39B4-416D-96AE-4E24883A09DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56EF3C9E-F7AB-445F-909A-656F16C93E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56EF3C9E-F7AB-445F-909A-656F16C93E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56EF3C9E-F7AB-445F-909A-656F16C93E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56EF3C9E-F7AB-445F-909A-656F16C93E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281088E7-B6C1-456C-8419-1ABABBD32BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281088E7-B6C1-456C-8419-1ABABBD32BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281088E7-B6C1-456C-8419-1ABABBD32BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281088E7-B6C1-456C-8419-1ABABBD32BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E08A518A-E453-4566-AB5A-1A8231651B95}
+	EndGlobalSection
+EndGlobal

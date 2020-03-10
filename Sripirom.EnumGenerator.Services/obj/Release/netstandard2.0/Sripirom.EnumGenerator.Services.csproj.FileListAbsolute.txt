@@ -1,0 +1,9 @@
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\bin\Release\netstandard2.0\Sripirom.EnumGenerator.Services.deps.json
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\bin\Release\netstandard2.0\Sripirom.EnumGenerator.Services.dll
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\bin\Release\netstandard2.0\Sripirom.EnumGenerator.Services.pdb
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\obj\Release\netstandard2.0\Sripirom.EnumGenerator.Services.csprojAssemblyReference.cache
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\obj\Release\netstandard2.0\Sripirom.EnumGenerator.Services.csproj.CoreCompileInputs.cache
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\obj\Release\netstandard2.0\Sripirom.EnumGenerator.Services.AssemblyInfoInputs.cache
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\obj\Release\netstandard2.0\Sripirom.EnumGenerator.Services.AssemblyInfo.cs
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\obj\Release\netstandard2.0\Sripirom.EnumGenerator.Services.dll
+E:\sripirom\github\EnumGenerator\Sripirom.EnumGenerator.Services\obj\Release\netstandard2.0\Sripirom.EnumGenerator.Services.pdb

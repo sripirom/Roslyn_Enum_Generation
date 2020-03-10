@@ -1,6 +1,6 @@
 using System;
 
-namespace EnumGenerator.Enums
+namespace Sripirom.EnumGenerator.Domains.Enums
 {
     [AttributeUsage(AttributeTargets.Enum, Inherited = false)]
     public class TableNameAttribute : Attribute

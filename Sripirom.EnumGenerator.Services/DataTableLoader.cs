@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace EnumGenerator
+namespace Sripirom.EnumGenerator.Services
 {
     public class DataTableLoader
     {

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+  <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sripirom.EnumGenerator.Services\Sripirom.EnumGenerator.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domains\Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

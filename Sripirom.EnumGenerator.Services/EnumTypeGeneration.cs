@@ -7,7 +7,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-namespace EnumGenerator
+namespace Sripirom.EnumGenerator.Services
 {
   public static class EnumTypeGeneration
   {
